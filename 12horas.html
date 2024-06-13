@@ -77,6 +77,13 @@ button{
     border-radius:10px;
     text-align:center;
 }
+.proximo {
+    text-align:center;
+    display:flex;
+    flex-direction:rows;
+ justify-content:center;
+    
+}
 </style>
 </head>
 <body onload="verificarHorario()">
@@ -115,7 +122,7 @@ button{
 <input type="number" id="valor_input" placeholder="Valor" min="1">
 <br>
     <button class="btn1" onclick="enviarMensagemParaWhatsapp()">VALIDAR PULE</button>
-    <p>PROXIMOS HORÁRIOS </P>
+    <span class="proximo">PROXIMOS HORÁRIOS </span>
        <button class="btn2" onclick="proximohorario()12">12:00</button>
           <button class="btn3" onclick="proximohorario15()">15:00</button>
 
