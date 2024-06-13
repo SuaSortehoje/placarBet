@@ -36,7 +36,8 @@ h2{
     outline:none;
 }
 .content {
-    background-image: linear-gradient( 90deg, gold, green, yellow );
+    background-image: linear-gradient( 90deg, gold, green, yellow ); 
+    
     text-align:center;
     margin-top:0%;
     
@@ -124,7 +125,7 @@ button{
 <input type="tel" id="time5_input"class="inputnomeDoTime" placeholder="time1"maxlength="1">   x <input type="tel" id="time6_input"class="inputnomeDoTime"placeholder="time2"maxlength="1">   <img id="foto" class="ft"src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/download-9.png" alt="#">
 </div>
 
-<br><br>
+<br>
 <input type="number" id="valor_input" placeholder="Valor" min="1">
 <br>
     <button class="btn1" onclick="enviarMensagemParaWhatsapp()">VALIDAR PULE</button>
@@ -166,12 +167,16 @@ button{
         var total6 = parseInt(time6);
          var pegar = 300 * valor;
          var titulos = "BOLAO_MULTI_JOGO";
-          var valor = valor
+          var valor = valor;
+          
+          const codigo = Math.floor(100000 + Math.random() * 900000);
 
+const responsabilidade = "E de Responsabilidade do Apostador Conferir sua pule antes da Extracao";
         const mensagem =`  ${titulos} 
         
         ${nome}
-        
+        DATA E HORA ATUAL
+ *Data: ${new Date().toLocaleDateString()}*       *Hora: ${new Date().toLocaleTimeString()}*
       FLAMENGO : ${time1} x ${time2} : GREMIO
         
       EC.BAHIA: ${time3} x ${time4} :FORTALEZA
@@ -180,7 +185,10 @@ button{
       
         VALOR A PAGAR :  ${valor}
       
-       TOTAL A RECEBER: R$ ${pegar}`;
+       TOTAL A RECEBER: R$ ${pegar}
+     *Nº Controle da Aposta* : *${codigo}*
+ 
+*${responsabilidade}*`;
 
         const linkWhatsApp = `https://wa.me/5571992290058?text=${encodeURIComponent(mensagem)}`;
         window.open(linkWhatsApp, '_blank');
