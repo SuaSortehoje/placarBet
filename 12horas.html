@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PALPITE</title>
+ <style>
+body  {
+    text-align:center;
+    background:green;
+    margin-top
+}
+h1{
+    background:green;
+    color:white;
+    font-size:18px;
+    
+}
+.ft {
+    width:50px;
+    height:50px;
+    
+  
+}
+.inputnomeDoTime {
+    display:fixed;
+    width:80px;
+    text-align:center;
+    height:20px;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:18px;
+    outline:none;
+}
+.content {
+    background-image: linear-gradient( 90deg, gold, green, yellow ); 
+    height:550px;
+    text-align:center;
+    margin-top:0%;
+    
+}
+
+#valor_input {
+    display:flex;
+    flex-direction:row;
+justify-content:center;
+    width:30%;
+    border-radius:10px;
+    margin-left:35%;
+    text-align:center;
+}
+button{
+    border-radius:10px;
+    width:70%;
+    height:30px;
+}
+button{
+    width:80px;
+}
+.btn1{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    margin:5px;
+    width:60%;
+    margin-left:60px;
+}
+#nome {
+    border-radius:10px;
+    text-align:center;
+}
+</style>
+</head>
+<body onload="verificarHorario()">
+
+    <div class="content">
+        <h1>PALPITE DO DIA 13/06</h1> 
+<h2> O JOGO SO PODERA SER FEITO ATE AS 19:50<h2>
+<input type="text" placeholder="nome" id ="nome">
+
+             <!--TIME 01 -->
+        <div class="palpite">
+            <img src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/download-5.png" class="ft" alt="#">
+            <input type="tel" id="time1_input" class="inputnomeDoTime" value="" placeholder="time1"maxlength="1">
+            x
+            <input type="tel" id="time2_input" class="inputnomeDoTime" placeholder="time2"maxlength="1">
+            <img src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/time1.jpeg" class="ft" alt="#">
+        </div>
+        
+             <!--TIME 02 -->
+             
+<div class="palpite"id="horarioInput">
+<img src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/download-6.png"id="foto" class="ft" alt="#">
+
+<input type="tel" id="time3_input"class="inputnomeDoTime" placeholder="time1"maxlength="1">   x <input type="tel" id="time4_input" class="inputnomeDoTime"placeholder="time2"maxlength="1">  <img src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/download-7.png"id="fot" class="ft" alt="#">
+</div>
+
+
+              <!--TIME 03 -->
+              
+<div class="palpite">
+<img src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/download-8.png" id="foto" class="ft"alt="#">
+<input type="tel" id="time5_input"class="inputnomeDoTime" placeholder="time1"maxlength="1">   x <input type="tel" id="time6_input"class="inputnomeDoTime"placeholder="time2"maxlength="1">   <img id="foto" class="ft"src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/download-9.png" alt="#">
+</div>
+
+<br><br>
+<input type="number" id="valor_input" placeholder="Valor" min="1">
+<br>
+    <button class="btn1" onclick="enviarMensagemParaWhatsapp()">VALIDAR PULE</button>
+    <p>PROXIMOS HORÁRIOS </P>
+       <button class="btn2" onclick="proximohorario()12">12:00</button>
+          <button class="btn3" onclick="proximohorario15()">15:00</button>
+
+          <button class="btn4" onclick="proximohorario19()">19:00</button>
+             <button class="btn5" onclick="proximohorario19()">21:00</button>
+</div>
+</div>
+
+    
+    </div>
+
+    <script>
+        function enviarMensagemParaWhatsapp() {
+     var nome = document.getElementById("nome").value;
+    var time1 = document.getElementById('time1_input').value;
+    var time2 = document.getElementById('time2_input').value;
+    var time3 = document.getElementById('time3_input').value;
+    var time4 = document.getElementById('time4_input').value;
+    var time5 = document.getElementById('time5_input').value;
+    var time6 = document.getElementById('time6_input').value;
+    var valor = parseFloat(document.getElementById('valor_input').value);
+
+    // Verificar se todos os campos estão preenchidos
+    if (time1 && time2 && time3 && time4 && time5 && time6 && valor) {
+        var total1 = parseInt(time1);
+        var total2 = parseInt(time2);
+        var total3 = parseInt(time3);
+        var total4 = parseInt(time4);
+        var total5 = parseInt(time5);
+        var total6 = parseInt(time6);
+         var pegar = 300 * valor;
+
+        const mensagem = `${nome}
+        
+      FLAMENGO : ${time1} x ${time2} :GREMIO
+        
+      EC.BAHIA: ${time3} x ${time4} :FORTALEZA
+       
+      PALMEIRA: ${time5} x ${time6} :VASCO
+      
+           \n\n Total: R$ ${pegar}`;
+
+        const linkWhatsApp = `https://wa.me/5571992290058?text=${encodeURIComponent(mensagem)}`;
+        window.open(linkWhatsApp, '_blank');
+    } else {
+        alert('Por favor, preencha todos os campos antes de enviar e digite um valor válido.');
+    }
+}
+
+    function verificarHorario() {
+        var horarios = ["19:50", "19:50", "19:50", "19:50", "19:50" , "19:50"];
+        var inputs = document.querySelectorAll('.inputnomeDoTime');
+        var horaAtual = new Date().getHours() + ':' + new Date().getMinutes();
+
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            var horario = horarios[i];
+
+            if (input.value && input.value !== horario) {
+                alert(`Por favor, insira este palpite às ${horario}.`);
+                input.value = '';
+                return;
+            }
+
+            if (horaAtual > horario) {
+                input.disabled = true;
+            }
+        }
+    }
+
+    </script>
+</body>
+</html>
