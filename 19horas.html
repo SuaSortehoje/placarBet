@@ -176,12 +176,14 @@ button{
           
           const codigo = Math.floor(100000 + Math.random() * 900000);
 
-const responsabilidade = "E de Responsabilidade do Apostador Conferir sua pule antes da Extracao";
+const responsabilidade = "E de Responsabilidade do Apostador Conferir sua pule antes do jogo";
         const mensagem =`  ${titulos} 
         
         ${nome}
-        DATA E HORA ATUAL
+        
+                 DATA E HORA ATUAL
  *Data: ${new Date().toLocaleDateString()}*       *Hora: ${new Date().toLocaleTimeString()}*
+ 
       FLAMENGO : ${time1} x ${time2} : GREMIO
         
       EC.BAHIA: ${time3} x ${time4} :FORTALEZA
@@ -191,6 +193,7 @@ const responsabilidade = "E de Responsabilidade do Apostador Conferir sua pule a
         VALOR A PAGAR :  ${valor}
       
        TOTAL A RECEBER: R$ ${pegar}
+       
      *Nº Controle da Aposta* : *${codigo}*
  
 *${responsabilidade}*`;
