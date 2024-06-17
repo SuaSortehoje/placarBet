@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/images%20(37).jpg"> 
+<meta name="url" content="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/images%20(37).jpg">
+    
+    <title>BOLAO_MULTI_JOGO</title>
+    <style>
+        body {
+            text-align: center;
+            background: green;
+        }
+        h1 {
+            background: green;
+            color: white;
+            font-size: 18px;
+        }
+        h2 {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .ft {
+            width: 50px;
+            height: 50px;
+        }
+        .inputnomeDoTime {
+            width: 80px;
+            text-align: center;
+            height: 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            outline: none;
+        }
+          .inputnomeDoTime:hover {
+            background:#00FF00;
+            color:black;
+        }
+        .content {
+            background-image: linear-gradient(90deg, gold, green, yellow);
+            text-align: center;
+            padding: px;
+        }
+        #valor_input {
+            width: 30%;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px auto;
+            display: block;
+        }
+      
+        #total_display {
+            font-weight: bold;
+            color: white;
+            margin: 10px 0;
+        }
+        button {
+            border-radius: 10px;
+            margin: 1px;
+            height: 30px;
+            width: 45px;
+            outline: none;
+            cursor: pointer;
+            background:#007FFF;
+            color:white;
+            font-weight:bold;
+        }
+        button:hover {
+            background: #00ff00;
+            color:black;
+        }
+          .btn1{
+    display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 5px;
+            width: 50%;
+            margin-left: 90px;
+            background: teal;
+            color: white;
+            font-weight: bold;
+        }
+        .btn1:focus {
+            background: #00ff00;
+            color: black;
+        }
+        #nome {
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .proximo {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .ima {
+            width: 100%;
+            height: 100px;
+        }
+        .horas {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body onload="verificarHorario()">
+
+    <div class="content">
+        <h1>BOLAO DO DIA 13/06</h1> 
+        <h2> O JOGO SÓ PODERÁ SER FEITO ATÉ AS<br><span class="horas"> 19:00</span></h2>
+        <img class="ima" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/images%20(37).jpg">
+        <input type="text" placeholder="nome" id="nome">
+
+        <!--TIME 01 -->
+        <div class="palpite">
+        
+            <img onclick="alert('guarani')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/guarani.png" class="ft" alt="#">
+            <input type="tel" id="time1_input" class="inputnomeDoTime" placeholder="time1" maxlength="1" oninput="calcularTotal()">
+            x
+            <input type="tel" id="time2_input" class="inputnomeDoTime" placeholder="time2" maxlength="1" oninput="calcularTotal()">
+            <img onclick="alert('ituano')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/ituano.png" class="ft" alt="#">
+        </div>
+        
+        <!--TIME 02 -->
+        <div class="palpite">
+            <img onclick="alert('novorizontino')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/novorizontino.png" class="ft" alt="#">
+            <input type="tel" id="time3_input" class="inputnomeDoTime" placeholder="time1" maxlength="1" oninput="calcularTotal()">
+            x
+            <input type="tel" id="time4_input" class="inputnomeDoTime" placeholder="time2" maxlength="1" oninput="calcularTotal()">
+            <img onclick="alert('amazonas')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/amazonas.png" class="ft" alt="#">
+        </div>
+
+        <!--TIME 03 -->
+        <div class="palpite">
+            <img onclick="alert('paysandu')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/paysandu.png" class="ft" alt="#">
+            <input type="tel" id="time5_input" class="inputnomeDoTime" placeholder="time1" maxlength="1" oninput="calcularTotal()">
+            x
+            <input type="tel" id="time6_input" class="inputnomeDoTime" placeholder="time2" maxlength="1" oninput="calcularTotal()">
+            <img onclick="alert('crb')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/crb.png" class="ft" alt="#">
+        </div>
+
+        <input type="number" id="valor_input" placeholder="Valor" min="1" oninput="calcularTotal()">
+        <div id="total_display">TOTAL A RECEBER: R$ 0</div>
+        <button class="btn1" onclick="solicitarCodigo()">VALIDAR PULE</button>
+
+        <div class="proximo">
+            <span>PRÓXIMOS HORÁRIOS</span><br>
+            <a href="jogosate01:00.html"><button class="btn3">01:00</button></a>
+            <a href="jogosate03:00.html"><button class="btn4">03:00</button></a>
+            <a href="jogosate05:00.html"><button class="btn5">05:00</button></a>
+            <a href="jogosate07:00.html"><button class="btn2">07:00</button></a>
+            <a href="jogosate09:00.html"><button class="btn3">09:00</button></a>
+            <a href="jogosate11:00.html"><button class="btn4">11:00</button></a>
+            <a href="jogosate12:00.html"><button class="btn2">13:00</button></a>
+            <a href="jogosate14:00.html"><button class="btn3">15:00</button></a>
+            <a href="jogosate16:00.html"><button class="btn4">17:00</button></a>
+            <a href="jogosate18:00.html"><button class="btn5">19:00</button></a>
+            <a href="jogosate20:00.html"><button class="btn2">21:00</button></a>
+            <a href="jogosate22:00.html"><button class="btn2">23:00</button></a>
+        </div>
+    </div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://wa.me/5571992290058?text=pix%20para%20Liberar%20O%20(CODIGO)%20telefone:%2071992290058" style="position:fixed;width:60px;height:60px;bottom:40px;right:20px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+<i style="margin-top:16px" class="fa fa-whatsapp"></i>
+</a>
+    <script>
+        const validCodes = ['563bcdf', '57300bt', '72736b1', '827c62u', 'yeg6bet'];
+
+        function solicitarCodigo() {
+            const codigo = prompt("Por favor,  solicite o código ao cambista:");
+            if (validCodes.includes(codigo)) {
+                enviarMensagemParaWhatsapp();
+            } else {
+                alert("Código inválido. Por favor, tente novamente.");
+            }
+        }
+
+        function enviarMensagemParaWhatsapp() {
+            var nome = document.getElementById("nome").value;
+            var time1 = document.getElementById('time1_input').value;
+            var time2 = document.getElementById('time2_input').value;
+            var time3 = document.getElementById('time3_input').value;
+            var time4 = document.getElementById('time4_input').value;
+            var time5 = document.getElementById('time5_input').value;
+            var time6 = document.getElementById('time6_input').value;
+            var valor = parseFloat(document.getElementById('valor_input').value);
+
+            if (nome && time1 && time2 && time3 && time4 && time5 && time6 && valor) {
+                var pegar = calcularTotal();
+                var titulos = "BOLAO_MULTI_JOGO";
+
+                let linktitulo = "https://placar-exato4.webnode.page/bolabet/";
+                const codigo = Math.floor(100000 + Math.random() * 900000);
+                const responsabilidade = "É de responsabilidade do apostador conferir sua pule antes do jogo";
+
+                const mensagem = `${linktitulo}
+                
+                *${titulos}*
+
+ola : *${nome}*
+
+                  DATA E HORA ATUAL
+   *Data: ${new Date().toLocaleDateString()}*       *Hora: ${new Date().toLocaleTimeString()}*
+
+          *America Mg*: ${time1} x ${time2}: *Crb Brasil Al* 
+         *Ponte Preta*: ${time3} x ${time4}: *Novorizontino*
+           *Ituano sp*: ${time5} x ${time6}: *Paysandu Sc*
+
+                    VALOR A PAGAR : ${valor}    
+ 
+               TOTAL A RECEBER : R$ ${pegar}
+
+      *Nº Controle da Aposta* : *${codigo}*
+
+    *${responsabilidade}*`;
+
+                const linkWhatsApp = `https://wa.me/5571992290058?text=${encodeURIComponent(mensagem)}`;
+                window.open(linkWhatsApp, '_blank');
+            } else {
+                alert('Por favor, preencha todos os campos antes de enviar e digite um valor válido.');
+            }
+        }
+
+        function calcularTotal() {
+            var valor = parseFloat(document.getElementById('valor_input').value);
+            var time1 = parseInt(document.getElementById('time1_input').value) || 0;
+            var time2 = parseInt(document.getElementById('time2_input').value) || 0;
+            var time3 = parseInt(document.getElementById('time3_input').value) || 0;
+            var time4 = parseInt(document.getElementById('time4_input').value) || 0;
+            var time5 = parseInt(document.getElementById('time5_input').value) || 0;
+            var time6 = parseInt(document.getElementById('time6_input').value) || 0;
+
+            if (!isNaN(valor)) {
+                var total = 50 *(time1 + time2 + time3 + time4 + time5 + time6) * valor;
+                document.getElementById('total_display').innerText = `TOTAL A RECEBER: R$ ${total}`;
+                return total;
+            } else {
+                document.getElementById('total_display').innerText = 'TOTAL A RECEBER: R$ 0';
+                return 0;
+            }
+        }
+
+        function verificarHorario() {
+            var dataLimite = new Date('2024-06-18T18:50:00'); // Data limite para as apostas
+            var dataAtual = new Date();
+
+            if (dataAtual > dataLimite) {
+                var inputs = document.querySelectorAll('.inputnomeDoTime, #valor_input');
+                inputs.forEach(function(input) {
+                    input.disabled = true;
+                });
+                alert('A data limite para enviar os palpites já passou.');
+            }
+        }
+    </script>
+</body>
+</html>
