@@ -109,7 +109,7 @@
 <body onload="verificarHorario()">
 
     <div class="content">
-        <h1>BOLAO DO DIA 18/06</h1> 
+        <h1>BOLAO DO DIA 19/06</h1> 
         <h2> O JOGO SÓ PODERÁ SER FEITO ATÉ AS<br><span class="horas"> 19:00</span></h2>
         <img class="ima" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/images%20(37).jpg">
         <input type="text" placeholder="nome" id="nome">
@@ -117,20 +117,20 @@
         <!--TIME 01 -->
         <div class="palpite">
         
-            <img onclick="alert('guarani')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/guarani.png" class="ft" alt="#">
+            <img onclick="alert('atletico goianiese')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/atletico%20goianiese.png" class="ft" alt="#">
             <input type="tel" id="time1_input" class="inputnomeDoTime" placeholder="time1" maxlength="1" oninput="calcularTotal()">
             x
             <input type="tel" id="time2_input" class="inputnomeDoTime" placeholder="time2" maxlength="1" oninput="calcularTotal()">
-            <img onclick="alert('ituano')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/ituano.png" class="ft" alt="#">
+            <img onclick="alert('criciuma')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/criciuma.png" class="ft" alt="#">
         </div>
         
         <!--TIME 02 -->
         <div class="palpite">
-            <img onclick="alert('novorizontino')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/novorizontino.png" class="ft" alt="#">
+            <img onclick="alert('botafogo.')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/botafogo.jpeg" class="ft" alt="#">
             <input type="tel" id="time3_input" class="inputnomeDoTime" placeholder="time1" maxlength="1" oninput="calcularTotal()">
             x
             <input type="tel" id="time4_input" class="inputnomeDoTime" placeholder="time2" maxlength="1" oninput="calcularTotal()">
-            <img onclick="alert('amazonas')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/amazonas.png" class="ft" alt="#">
+            <img onclick="alert('athletico-pr')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/athletico-pr.png" class="ft" alt="#">
         </div>
 
         <!--TIME 03 -->
@@ -139,7 +139,7 @@
             <input type="tel" id="time5_input" class="inputnomeDoTime" placeholder="time1" maxlength="1" oninput="calcularTotal()">
             x
             <input type="tel" id="time6_input" class="inputnomeDoTime" placeholder="time2" maxlength="1" oninput="calcularTotal()">
-            <img onclick="alert('crb')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/crb.png" class="ft" alt="#">
+            <img onclick="alert('goias')" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/goias.png" class="ft" alt="#">
         </div>
 
         <input type="number" id="valor_input" placeholder="Valor" min="1" oninput="calcularTotal()">
@@ -148,18 +148,14 @@
 
         <div class="proximo">
             <span>PRÓXIMOS HORÁRIOS</span><br>
-            <a href="jogosate01:00.html"><button class="btn3">01:00</button></a>
-            <a href="jogosate03:00.html"><button class="btn4">03:00</button></a>
-            <a href="jogosate05:00.html"><button class="btn5">05:00</button></a>
-            <a href="jogosate07:00.html"><button class="btn2">07:00</button></a>
+
             <a href="jogosate09:00.html"><button class="btn3">09:00</button></a>
-            <a href="jogosate11:00.html"><button class="btn4">11:00</button></a>
-            <a href="jogosate12:00.html"><button class="btn2">13:00</button></a>
+            
             <a href="jogosate14:00.html"><button class="btn3">15:00</button></a>
-            <a href="jogosate16:00.html"><button class="btn4">17:00</button></a>
+       
             <a href="jogosate18:00.html"><button class="btn5">19:00</button></a>
-            <a href="jogosate20:00.html"><button class="btn2">21:00</button></a>
-            <a href="jogosate22:00.html"><button class="btn2">23:00</button></a>
+
+            <a href="jogosate22:00.html"><button class="btn2">22:00</button></a>
         </div>
     </div>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -245,11 +241,11 @@ ola : *${nome}*
         }
 
         function verificarHorario() {
-            var dataLimite = new Date('2024-06-18T18:50:00'); // Data limite para as apostas
+            var dataLimite = new Date('2024-06-19T18:50:00'); // Data limite para as apostas
             var dataAtual = new Date();
 
             if (dataAtual > dataLimite) {
-                var inputs = document.querySelectorAll('.inputnomeDoTime, #valor_input');
+                var inputs = document.querySelectorAll('.inputnomeDoTime, #valor_input');p;
                 inputs.forEach(function(input) {
                     input.disabled = true;
                 });
