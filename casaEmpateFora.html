@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" href="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/multijoogo.jpg" type="image/jpeg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="icon" href="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/multijoogo.jpg" type="image/x-icon"> 
+    <meta name="url" content="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/multijoogo.jpg"> 
+    <title>APOSTA⚽GREEN</title>
+</head>
+<body onload="verificarCalcular()" style="text-align: center; background: green;">
+    <div style="background-image: linear-gradient(90deg, gold, green, yellow); text-align: center;">
+        <img class="ima" src="https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/multijogo.jpg" alt="Imagem" style="width: 100%; height: 70px;">
+     
+        <input type="text" placeholder="Nome" id="nome" style="border-radius: 10px; text-align: center; margin-bottom: 10px;">
+        
+        <!-- Séries -->
+        <div>
+            <span style="font-weight: bold; color: white;">SERIE A</span>
+        </div>
+        <div id="total_display" style="font-weight: bold; color: white; font-size: 16px; margin-top: 10px; background: green; text-align: center; border-radius: 10px; padding: 2px 15px; width: 100%;">Total: R$ 0.00</div>
+        <div id="divisions-container-a"></div>
+        
+        <div>
+            <span style="font-weight: bold; color: white;">SERIE B</span>
+        </div>
+        <div id="divisions-container-b"></div>
+        
+        <input type="number" id="valor_input" placeholder="Valor" value="1" oninput="updateTotal()" style="width: 20%; border-radius: 10px; text-align: center; font-weight: bold; outline: none; margin-left: 20px; margin-top: 10px; padding: 5px 10px;">
+        
+        <button onclick="solicitarCodigo()" style="border-radius: 10px; margin: 1px; height: 30px; width: 50%; outline: none; cursor: pointer; background: #00ff00; color: black; font-weight: bold; font-size: 14px;">ENVIAR</button>
+    </div>
+
+    <script>
+        // Arrays com as imagens das séries
+        var imgCasaSerieA = [
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/cruzeiro.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/bahia.png",
+           
+            
+        ];
+        
+        var imgForaSerieA = [
+         "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/bragatino.jpeg",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/cuiaba.png",
+          
+        ];
+        
+        var imgCasaSerieB = [
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/novorizontino.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/sport.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/crb.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/atletico-mg.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/vitoria.png",
+            
+        ];
+
+        var imgForaSerieB = [
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/guarani.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/america-mg.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/coritiba.png",
+            /*"https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/atletico-mg.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/vitoria.png",*/
+        ];
+
+         var imgCasaSerieC = [
+      "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/palmeiras.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/flamengo.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/criciuma.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/atletico-mg.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/vitoria.png",
+];
+
+var imgForaSerieC = [
+         "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/palmeiras.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/flamengo.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/criciuma.png",
+            "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/atletico-mg.png",
+              "https://raw.githubusercontent.com/SuaSortehoje/placarBet/main/vitoria.png",
+];
+
+
+        const validCodes = ['563bcdf', '57300bt', '72736b1', '827c62u', 'yeg6bet', '1234', '0000'];
+
+        function solicitarCodigo() {
+            const codigo = prompt("DIGITE O CODIGO PARA CONTINUAR:");
+
+            if (validCodes.includes(codigo)) {
+                alert("Código (APROVADO) pode continuar CLICK em OK.");
+                enviarMensagemParaWhatsapp();
+            } else {
+                alert("Código inválido. Tente novamente.");
+                solicitarCodigo();
+            }
+        }
+
+       function criarDivisao(imgCasa, imgFora, nomeCasa, nomeFora, horarioLimite) {
+    var division = document.createElement("div");
+    division.style.display = "flex";
+    division.style.alignItems = "center";
+    division.style.justifyContent = "center";
+    division.style.flexDirection = "column"; // Organiza verticalmente
+
+    // Container para as imagens e select
+    var contentContainer = document.createElement("div");
+    contentContainer.style.display = "flex";
+    contentContainer.style.alignItems = "center"; // Alinha verticalmente
+    contentContainer.style.justifyContent = "center"; // Centraliza
+
+    var imgCasaElement = document.createElement("img");
+    imgCasaElement.src = imgCasa;
+    imgCasaElement.style.width = "50px";
+    imgCasaElement.style.height = "50px";
+    imgCasaElement.alt = "Imagem Casa";
+    contentContainer.appendChild(imgCasaElement);
+
+    var selectContainer = document.createElement("div");
+    selectContainer.style.display = "flex";
+    selectContainer.style.flexDirection = "column"; // Organiza verticalmente
+    selectContainer.style.alignItems = "center";
+    selectContainer.style.margin = "10px"; // Margem entre a imagem e o select
+
+    // Texto de data e hora limite
+    var dataHoraLimite = document.createElement("div");
+    dataHoraLimite.textContent = `Limite: ${new Date(horarioLimite).toLocaleString()}`;
+    dataHoraLimite.style.fontSize = "12px"; // Ajuste o tamanho da fonte conforme necessário
+    dataHoraLimite.style.marginBottom = "5px"; // Ajuste o espaçamento conforme necessário
+    dataHoraLimite.style.fontWeight = "bold";
+    selectContainer.appendChild(dataHoraLimite);
+
+    var select = document.createElement("select");
+    select.style.width = "100%"; // Ocupa toda a largura do container
+    select.style.borderRadius = "10px";
+    select.style.fontWeight = "bold";
+    select.style.color = "white";
+    select.style.background = "blue";
+    select.style.textAlign = "center";
+    select.classList.add("premioInput");
+    select.addEventListener("change", function () {
+        // Altera a cor da opção selecionada para preto
+        select.style.color = "gold";
+        updateTotal();
+    });
+
+    // Verifica o horário limite
+    var dataLimite = new Date(horarioLimite);
+    var dataAtual = new Date();
+    if (dataAtual > dataLimite) {
+        select.disabled = true;
+    }
+
+    // Opções do select
+    var optionDefault = document.createElement("option");
+    optionDefault.value = "opcao";
+    optionDefault.textContent = `${nomeCasa} vs ${nomeFora}`;
+    select.appendChild(optionDefault);
+    
+
+    var optionCasa = document.createElement("option");
+    optionCasa.value = "casa";
+    optionCasa.dataset.valor = "3";
+    optionCasa.textContent = `Casa (3.00)`;
+    select.appendChild(optionCasa);
+
+    var optionEmpate = document.createElement("option");
+    optionEmpate.value = "EMPATE";
+    optionEmpate.dataset.valor = "4.00";
+    optionEmpate.textContent = `EMPATE (4.00)`;
+    select.appendChild(optionEmpate);
+
+    var optionFora = document.createElement("option");
+    optionFora.value = "FORA";
+    optionFora.dataset.valor = "3.00";
+    optionFora.textContent = `Fora (3.00)`;
+    select.appendChild(optionFora);
+
+    var option4 = document.createElement("option");
+    option4.value = "AMBOS FAZ GOL";
+    option4.dataset.valor = "2";
+    option4.textContent = "AMBOS FAZ GOL (2.0)";
+    select.appendChild(option4);
+
+    var option5 = document.createElement("option");
+    option5.value = "ACIMA DE 2.5";
+    option5.dataset.valor = "3.00";
+    option5.textContent = "ACIMA DE 2.5 (3.00)";
+    select.appendChild(option5);
+
+    var option6 = document.createElement("option");
+    option6.value = "ABAIXO DE 2.5";
+    option6.dataset.valor = "2.00";
+    option6.textContent = "ABAIXO DE 2.5 (2.00)";
+    select.appendChild(option6);
+
+    var option7 = document.createElement("option");
+    option7.value = "AMBAS/MARCAS 1T e 2T";
+    option7.dataset.valor = "25";
+    option7.textContent = "AMBAS/MARCAS 1T e 2T (25)";
+    select.appendChild(option7);
+
+    selectContainer.appendChild(select);
+    contentContainer.appendChild(selectContainer);
+
+    var imgForaElement = document.createElement("img");
+    imgForaElement.src = imgFora;
+    imgForaElement.style.width = "50px";
+    imgForaElement.style.height = "50px";
+    imgForaElement.alt = "Imagem Fora";
+    contentContainer.appendChild(imgForaElement);
+
+    division.appendChild(contentContainer);
+
+    return division;
+}
+
+        function extrairNomeTime(imgSrc) {
+            var partes = imgSrc.split("/");
+            var nomeArquivo = partes[partes.length - 1];
+            var nome = nomeArquivo.split(".")[0];
+            return nome.charAt(0).toUpperCase() + nome.slice(1);
+        }
+
+        function gerarDivisoes(serie, containerId, imgCasaArray, imgForaArray, horariosLimite) {
+            var container = document.getElementById(containerId);
+            for (var i = 0; i < imgCasaArray.length; i++) {
+                var imgCasa = imgCasaArray[i];
+                var imgFora = imgForaArray[i];
+                var nomeCasa = extrairNomeTime(imgCasa);
+                var nomeFora = extrairNomeTime(imgFora);
+                var horarioLimite = horariosLimite[i];
+                container.appendChild(criarDivisao(imgCasa, imgFora, nomeCasa, nomeFora, horarioLimite));
+            }
+        }
+
+        function gerarDivisoesSerieA() {
+            gerarDivisoes('A', 'divisions-container-a', imgCasaSerieA, imgForaSerieA, [
+                '2024-07-13T16:00:00',
+                '2024-07-13T16:00:00',         
+            ]);
+        }
+
+        function gerarDivisoesSerieB() {
+            gerarDivisoes('B', 'divisions-container-b', imgCasaSerieB, imgForaSerieB, [  
+                '2024-07-13T15:30:00',
+                '2024-07-13T17:00:00',
+                '2024-07-13T18:00:00',
+            ]);
+        }
+function gerarDivisoesSerieC() {
+    gerarDivisoes('C', 'divisions-container-c', imgCasaSerieC, imgForaSerieC, [
+        '2024-07-13T15:30:00',
+        '2024-07-13T17:00:00',
+        '2024-07-13T18:00:00',
+      
+    ]);
+}
+// Função para calcular a soma dos valores das seleções
+function calcularSoma(selects) {
+    var subtotal = 0;
+    var countCasa = 50; // Contador para as seleções "Casa"
+    var countFora = 20; // Contador para as seleções "Fora"
+    var countEmpate = 10; // Contador para as seleções "Empate"
+
+    selects.forEach(function(select) {
+        if (select.value !== 'opcao') {
+            var valorBase = parseFloat(select.selectedOptions[0].dataset.valor);
+            subtotal += valorBase;
+
+            // Contar a quantidade de seleções "Casa", "Fora" e "Empate"
+            switch (select.value) {
+                case 'casa':
+                    countCasa++;
+                    break;
+                case 'FORA':
+                    countFora++;
+                    break;
+                case 'EMPATE':
+                    countEmpate++;
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+
+    // Retornar o subtotal e os contadores
+    return { subtotal: subtotal, countCasa: countCasa, countFora: countFora, countEmpate: countEmpate };
+}
+
+
+    // Função para atualizar o total
+function updateTotal() {
+    var valorInput = parseFloat(document.getElementById('valor_input').value);
+    if (isNaN(valorInput) || valorInput <= 0) {
+        valorInput = 1; // Define um valor padrão caso o valor inserido seja inválido
+    }
+
+    var soma = 0;
+    var selectsA = document.querySelectorAll('#divisions-container-a select.premioInput');
+    var selectsB = document.querySelectorAll('#divisions-container-b select.premioInput');
+    var selectsC = document.querySelectorAll('#divisions-container-c select.premioInput');
+
+    // Calcular a soma dos valores das seleções
+    var resultA = calcularSoma(selectsA);
+    var resultB = calcularSoma(selectsB);
+    var resultC = calcularSoma(selectsC);
+
+    soma += resultA.subtotal + resultB.subtotal + resultC.subtotal;
+
+    // Calcular o número total de seleções feitas
+    var selecoesFeitas = countSelections();
+
+    // Adicionar bônus baseado no número de seleções
+    if (selecoesFeitas >=2) {
+        soma += Math.floor(resultA.countCasa /1 ) * 0;
+        soma += Math.floor(resultA.countEmpate / 1) * 0;
+        soma += Math.floor(resultA.countFora / 1) * 0;
+        
+    }
+    
+
+    // Multiplicar pelo valor de entrada e pelo número de seleções feitas
+    var total = soma * valorInput * selecoesFeitas;
+
+    // Atualizar o display do total
+    document.getElementById('total_display').innerText = 'Total: R$ ' + total.toFixed(2);
+}
+
+        // Conta o número de seleções feitas pelo usuário
+        function countSelections() {
+            var count = 0;
+            var selects = document.querySelectorAll('select.premioInput');
+            selects.forEach(function(select) {
+                if (select.value !== 'opcao') {
+                    count++;
+                }
+            });
+            return count;
+        }
+
+        var linktitilo ="https://placar-exato4.webnode.page/bolabet/";
+
+var linhaA = "-------------SERIE A---------------";
+
+var linhaB = "-------------SERIE B---------------";
+
+        
+
+
+        function validarEntradas() {
+            var nome = document.getElementById('nome').value;
+            var valor = document.getElementById('valor_input').value;
+
+            
+                
+
+            if (!valor || isNaN(valor) || valor <= 0) {
+                alert('Por favor, insira um valor válido.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function verificarCalcular() {
+    var dataLimite = new Date('2024-07-13T22:50:00');
+    var dataAtual = new Date();
+    var selects = document.querySelectorAll('.premioInput');
+
+    // Verifica se a data atual é maior que a data limite
+    if (dataAtual > dataLimite) {
+        selects.forEach(function(select) {
+            select.disabled = true; // Desabilita os selects se a data limite foi ultrapassada
+        });
+    } else {
+        selects.forEach(function(select) {
+            select.disabled = true; // Habilita os selects se ainda não passou da data limite
+        });
+    }
+
+    gerarDivisoesSerieA();
+    gerarDivisoesSerieB();
+    updateTotal();
+}
+
+function enviarMensagemParaWhatsapp() {
+    var nome = document.getElementById('nome').value;
+    var valor = document.getElementById('valor_input').value;
+    var mensagem = `${linktitilo}
+        DATA E HORA ATUAL
+        *Data: ${new Date().toLocaleDateString()}*  *Hora: ${new Date().toLocaleTimeString()}*\n
+        *Nome: ${nome}*\n`;
+
+    // Captura das seleções da Série A
+    var selectsA = document.querySelectorAll('#divisions-container-a select.premioInput');
+    selectsA.forEach(function(select) {
+        if (select.value !== 'opcao') {
+            var imgCasaUrl = select.parentNode.parentNode.querySelector('img:first-of-type').src; // Modificado para procurar a imagem correta
+            var imgForaUrl = select.parentNode.parentNode.querySelector('img:last-of-type').src; // Modificado para procurar a imagem correta
+            var nomeCasa = extrairNomeTime(imgCasaUrl);
+            var nomeFora = extrairNomeTime(imgForaUrl);
+
+            // Determina o tipo de aposta
+            var tipoAposta = select.value.toUpperCase();
+
+            mensagem += `\n       *${linhaA}*    \n               *${nomeCasa}*  vs  *${nomeFora}*\n                    ${tipoAposta}\n`;
+        }
+    });
+
+    // Captura das seleções da Série B
+    var selectsB = document.querySelectorAll('#divisions-container-b select.premioInput');
+    selectsB.forEach(function(select) {
+        if (select.value !== 'opcao') {
+            var imgCasaUrl = select.parentNode.parentNode.querySelector('img:first-of-type').src; // Modificado para procurar a imagem correta
+            var imgForaUrl = select.parentNode.parentNode.querySelector('img:last-of-type').src; // Modificado para procurar a imagem correta
+            var nomeCasa = extrairNomeTime(imgCasaUrl);
+            var nomeFora = extrairNomeTime(imgForaUrl);
+
+            // Determina o tipo de aposta
+            var tipoAposta = select.value.toUpperCase();
+
+            mensagem += `\n       *${linhaB}*    \n               *${nomeCasa}*  vs  *${nomeFora}*\n                    ${tipoAposta}\n`;
+        }
+    });
+
+    mensagem += `\n              Valor A PAGAR: R$ *${valor}* \n`;
+
+    var total = document.getElementById('total_display').innerText;
+    mensagem += `\nTotal a RECEBER: *${total}*\n`;
+
+    var url = `https://api.whatsapp.com/send?phone=5571992290058&text=${encodeURIComponent(mensagem)}`;
+    console.log("URL gerado:", url); // Adicionado para depuração
+
+    // Abrir o link em uma nova aba
+    window.open(url, '_blank');
+}
+
+// Função para validar as entradas antes de enviar para WhatsApp
+
+
+    </script>
+</body>
+</html>
