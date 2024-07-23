@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Selection</title>
+    <link rel="stylesheet" href="styles.css">
+<style>body { background:grey;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.image-container {
+    margin: 10px;
+    text-align: center;
+    width: 10%;
+}
+
+.image-container img {
+    width: 50px;
+    height: 50px;
+    border-radius:10px;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background:lightblue;
+    border-radius:10px;
+}
+button:focus {
+    background:#00ff00;
+}
+.image-checkbox{
+    display:none;
+}
+
+.time-selection {
+    background-color: grey;
+    border: 1px solid black;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza verticalmente */
+    height: fit-content; /* Altura automática baseada no conteúdo */
+}
+
+.time-button {
+    background-color: lightblue;
+    padding: 0px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 2px; /* Espaçamento entre os botões */
+}
+
+    .time-button.selected {
+    background-color: lightblue;
+  }
+.horarios-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            width: 100%;
+            
+        }
+        .time-button.selected {
+    background-color: lightblue;
+  }
+    .time-button.hidden {
+    display: none;
+}
+.valor {
+    text-align:center;
+    border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+    <div class="container">
+      <div id="checkboxCount">Checkboxes Marcados: 0</div>
+        <div class="images-container">
+            <!-- 50 image containers -->
+            <div class="image-container">
+                <input id="time1" type="checkbox" class="image-checkbox" id="image1">
+                <label for="time1"><img for="time1" src="https://raw.githubusercontent.com/Savanty/Time-/main/1.jpeg" alt="Image 1"></label>
+            </div>
+            <div class="image-container">
+                <input id="time2" type="checkbox" class="image-checkbox" id="image2">
+                <label for ="time2"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/2.jpeg" alt="Image 2">
+            </div>
+            <div class="image-container">
+                <input id="time3" type="checkbox" class="image-checkbox" id="image3">
+                <label for ="time3"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/3.jpeg" alt="Image 3">
+            </div>
+            <div class="image-container">
+                <input id="time4" type="checkbox" class="image-checkbox" id="image4">
+                <label for ="time4"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/4.jpeg" alt="Image 4">
+            </div>
+            <div class="image-container">
+                <input id="time5" type="checkbox" class="image-checkbox" id="image5">
+                <label for ="time5"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/5.jpeg" alt="Image 5">
+            </div>
+            <div class="image-container">
+                <input id="time6" type="checkbox" class="image-checkbox" id="image6">
+                <label for ="time6"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/6.jpeg" alt="Image 6">
+            </div>
+            <div class="image-container">
+                <input id="time7" type="checkbox" class="image-checkbox" id="image7">
+                <label for ="time7"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/7.jpeg" alt="Image 7">
+            </div>
+            <div class="image-container">
+                <input id="time8" type="checkbox" class="image-checkbox" id="image8">
+                <label for ="time8"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/8.jpeg" alt="Image 8">
+            </div>
+            <div class="image-container">
+                <input id="time9" type="checkbox" class="image-checkbox" id="image9">
+                <label for ="time9"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/9.jpeg" alt="Image 9">
+            </div>
+            <div class="image-container">
+                <input id="time10" type="checkbox" class="image-checkbox" id="image10">
+                <label for ="time10"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/10.jpeg" alt="Image 10">
+            </div>
+            <div class="image-container">
+                <input id="time11" type="checkbox" class="image-checkbox" id="image11">
+                <label for ="time11"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/11.jpeg" alt="Image 11">
+            </div>
+            <div class="image-container">
+                <input id="time12" type="checkbox" class="image-checkbox" id="image12">
+                <label for ="time12"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/12.jpeg" alt="Image 12">
+            </div>
+            <div class="image-container">
+                <input id="time13" type="checkbox" class="image-checkbox" id="image13">
+                <label for ="time13"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/13.jpeg" alt="Image 13">
+            </div>
+            <div class="image-container">
+                <input id="time14" type="checkbox" class="image-checkbox" id="image14">
+                <label for ="time14"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/14.jpeg" alt="Image 14">
+            </div>
+            <div class="image-container">
+                <input id="time15" type="checkbox" class="image-checkbox" id="image15">
+                <label for ="time15"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/15.jpeg" alt="Image 15">
+            </div>
+            <div class="image-container">
+                <input id="time16" type="checkbox" class="image-checkbox" id="image16">
+                <label for ="time16"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/16.jpeg" alt="Image 16">
+            </div>.
+            <div class="image-container">
+                <input id="time17" type="checkbox" class="image-checkbox" id="image17">
+                <label for ="time17"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/17.jpeg" alt="Image 17">
+            </div>
+            <div class="image-container">
+                <input id="time18" type="checkbox" class="image-checkbox" id="image18">
+                <label for ="time18"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/18.jpeg" alt="Image 18">
+            </div>
+            <div class="image-container">
+                <input id="time19" type="checkbox" class="image-checkbox" id="image19">
+                <label for ="time19"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/19.jpeg" alt="Image 19">
+            </div>
+            <div class="image-container">
+                <input id="time20" type="checkbox" class="image-checkbox" id="image20">
+                <label for ="time20"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/20.jpeg" alt="Image 20">
+            </div>
+            <div class="image-container">
+                <input id="time21" type="checkbox" class="image-checkbox" id="image21">
+                <label for ="time21"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/21.jpeg" alt="Image 21">
+            </div>
+            <div class="image-container">
+                <input id="time22" type="checkbox" class="image-checkbox" id="image22">
+                <label for ="time22"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/22.jpeg" alt="Image 22">
+            </div>
+            <div class="image-container">
+                <input id="time23" type="checkbox" class="image-checkbox" id="image23">
+                <label for ="time23"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/23.jpeg" alt="Image 23">
+            </div>
+            <div class="image-container">
+                <input id="time24" type="checkbox" class="image-checkbox" id="image24">
+                <label for ="time24"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/24.jpeg" alt="Image 24">
+            </div>
+            <div class="image-container">
+                <input id="time25" type="checkbox" class="image-checkbox" id="image25">
+                <label for ="time25"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/25.jpeg" alt="Image 25">
+            </div>
+            <div class="image-container">
+                <input id="time26" type="checkbox" class="image-checkbox" id="image26">
+                <label for ="time26"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/26.jpeg" alt="Image 26">
+            </div>
+            <div class="image-container">
+                <input id="time27" type="checkbox" class="image-checkbox" id="image27">
+                <label for ="time27"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/27.jpeg" alt="Image 27">
+            </div>
+            <div class="image-container">
+                <input id="time28" type="checkbox" class="image-checkbox" id="image28">
+                <label for ="time28"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/28.jpeg" alt="Image 28">
+            </div>
+            <div class="image-container">
+                <input id="time29" type="checkbox" class="image-checkbox" id="image29">
+                <label for ="time29"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/29.jpeg" alt="Image 29">
+            </div>
+            <div class="image-container">
+                <input id="time30" type="checkbox" class="image-checkbox" id="image30">
+                <label for ="time30"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/30.jpeg" alt="Image 30">
+            </div>
+            <div class="image-container">
+                <input id="time31" type="checkbox" class="image-checkbox" id="image31">
+                <label for ="time31"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/31.jpeg" alt="Image 31">
+            </div>
+            <div class="image-container">
+                <input id="time32" type="checkbox" class="image-checkbox" id="image32">
+                <label for ="time32"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/32.jpeg" alt="Image 32">
+            </div>
+            <div class="image-container">
+                <input id="time33" type="checkbox" class="image-checkbox" id="image33">
+                <label for ="time33"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/33.jpeg" alt="Image 33">
+            </div>
+            <div class="image-container">
+                <input id="time34" type="checkbox" class="image-checkbox" id="image34">
+                <label for ="time34"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/34.jpeg" alt="Image 34">
+            </div>
+            <div class="image-container">
+                <input id="time35" type="checkbox" class="image-checkbox" id="image35">
+                <label for ="time35"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/35.jpeg" alt="Image 35">
+            </div>
+            <div class="image-container">
+                <input id="time36" type="checkbox" class="image-checkbox" id="image36">
+                <label for ="time36"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/36.jpeg" alt="Image 36">
+            </div>
+            <div class="image-container">
+                <input id="time37" type="checkbox" class="image-checkbox" id="image37">
+                <label for ="time37"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/37.jpeg" alt="Image 37">
+            </div>
+            <div class="image-container">
+                <input id="time38" type="checkbox" class="image-checkbox" id="image38">
+                <label for ="time38"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/38.jpeg" alt="Image 38">
+            </div>
+            <div class="image-container">
+                <input id="time39" type="checkbox" class="image-checkbox" id="image39">
+                <label for ="time39"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/39.jpeg" alt="Image 39">
+            </div>
+            <div class="image-container">
+                <input id="time40" type="checkbox" class="image-checkbox" id="image40">
+                <label for ="time40"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/40.jpeg" alt="Image 40">
+            </div>
+            <div class="image-container">
+                <input id="time41" type="checkbox" class="image-checkbox" id="image41">
+                <label for ="time41"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/41.jpeg" alt="Image 41">
+            </div>
+            <div class="image-container">
+                <input id="time42" type="checkbox" class="image-checkbox" id="image42">
+                <label for ="time42"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/42.jpeg" alt="Image 42">
+            </div>
+            <div class="image-container">
+                <input id="time43" type="checkbox" class="image-checkbox" id="image43">
+                <label for ="time43"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/43.jpeg" alt="Image 43">
+            </div>
+            <div class="image-container">
+                <input id="time44" type="checkbox" class="image-checkbox" id="image44">
+                <label for ="time44"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/44.jpeg" alt="Image 44">
+            </div>
+            <div class="image-container">
+                <input id="time45" type="checkbox" class="image-checkbox" id="image45">
+                <label for ="time45"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/45.jpeg" alt="Image 45">
+            </div>
+            <div class="image-container">
+                <input id="time46" type="checkbox" class="image-checkbox" id="image46">
+                <label for ="time46"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/46.jpeg" alt="Image 46">
+            </div>
+            <div class="image-container">
+                <input id="time47" type="checkbox" class="image-checkbox" id="image47">
+                <label for ="time47"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/47.jpeg" alt="Image 47">
+            </div>
+            <div class="image-container">
+                <input id="time48" type="checkbox" class="image-checkbox" id="image48">
+                <label for ="time48"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/48.jpeg" alt="Image 48">
+            </div>
+            <div class="image-container">
+                <input id="time49" type="checkbox" class="image-checkbox" id="image49">
+                <label for ="time49"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/49.jpeg" alt="Image 49">
+            </div>
+            <div>
+          <div id="result"></div>
+     
+           <input class="valor" type="number" id="inputValue" value="1" placeholder="Digite o valor">
+     
+        </div>
+            <div class="image-container">
+                <input id="time50" type="checkbox" class="image-checkbox" id="image50">
+                <label for ="time50"><img for="" src="https://raw.githubusercontent.com/Savanty/Time-/main/50.jpeg" alt="Image 50">
+            </div>
+            
+        </div>
+        
+        <div>
+       
+        <div id="time-selection-container" class="time-selection">
+  
+    <div class="radio-container">
+      <div class="time-container">
+          <button type="button" class="time-button" value="01:00" onclick="toggleSelection(this)">01:00</button>
+        <button type="button" class="time-button" value="01:20" onclick="toggleSelection(this)">01:20</button>
+        <button type="button" class="time-button" value="01:40" onclick="toggleSelection(this)">01:40</button>
+        <button type="button" class="time-button" value="02:00" onclick="toggleSelection(this)">02:00</button>
+        <button type="button" class="time-button" value="02:20" onclick="toggleSelection(this)">02:20</button>
+        <button type="button" class="time-button" value="02:40" onclick="toggleSelection(this)">02:40</button>
+        <button type="button" class="time-button" value="03:00" onclick="toggleSelection(this)">03:00</button>
+        <button type="button" class="time-button" value="03:20" onclick="toggleSelection(this)">03:20</button>
+        <button type="button" class="time-button" value="03:40" onclick="toggleSelection(this)">03:40</button>
+        <button type="button" class="time-button" value="04:00" onclick="toggleSelection(this)">04:00</button>
+        <button type="button" class="time-button" value="04:20" onclick="toggleSelection(this)">04:20</button>
+           <button type="button" class="time-button" value="04:40" onclick="toggleSelection(this)">04:40</button>
+        <button type="button" class="time-button" value="05:00" onclick="toggleSelection(this)">05:00</button>
+        <button type="button" class="time-button" value="05:20" onclick="toggleSelection(this)">05:30</button>
+        <button type="button" class="time-button" value="05:40" onclick="toggleSelection(this)">05:40</button>
+        <button type="button" class="time-button" value="06:00" onclick="toggleSelection(this)">06:00</button>
+        <button type="button" class="time-button" value="06:20" onclick="toggleSelection(this)">06:20</button>
+        <button type="button" class="time-button" value="06:40" onclick="toggleSelection(this)">06:40</button>
+        <button type="button" class="time-button" value="07:00" onclick="toggleSelection(this)">07:00</button>
+        <button type="button" class="time-button" value="07:20" onclick="toggleSelection(this)">07:20</button>
+        <button type="button" class="time-button" value="07:40" onclick="toggleSelection(this)">07:40</button>
+        <button type="button" class="time-button" value="08:00" onclick="toggleSelection(this)">08:00</button>
+           <button type="button" class="time-button" value="08:20" onclick="toggleSelection(this)">08:20</button>
+        <button type="button" class="time-button" value="08:40" onclick="toggleSelection(this)">08:40</button>
+        <button type="button" class="time-button" value="09:00" onclick="toggleSelection(this)">09:00</button>
+        <button type="button" class="time-button" value="09:20" onclick="toggleSelection(this)">09:20</button>
+        <button type="button" class="time-button" value="09:40" onclick="toggleSelection(this)">09:40</button>
+        <button type="button" class="time-button" value="10:00" onclick="toggleSelection(this)">10:00</button>
+        <button type="button" class="time-button" value="10:20" onclick="toggleSelection(this)">10:20</button>
+        <button type="button" class="time-button" value="10:40" onclick="toggleSelection(this)">10:40</button>
+           <button type="button" class="time-button" value="11:00" onclick="toggleSelection(this)">11:00</button>
+        <button type="button" class="time-button" value="11:20" onclick="toggleSelection(this)">11:20</button>
+        <button type="button" class="time-button" value="11:40" onclick="toggleSelection(this)">11:40</button>
+        <button type="button" class="time-button" value="12:00" onclick="toggleSelection(this)">13:00</button>
+        <button type="button" class="time-button" value="12:20" onclick="toggleSelection(this)">12:20</button>
+        <button type="button" class="time-button" value="12:40" onclick="toggleSelection(this)">12:40</button>
+        
+       <button type="button" class="time-button" value="13:00" onclick="toggleSelection(this)">13:00</button>
+        <button type="button" class="time-button" value="13:20" onclick="toggleSelection(this)">13:20</button>
+        <button type="button" class="time-button" value="13:40" onclick="toggleSelection(this)">13:40</button>
+        <button type="button" class="time-button" value="14:00" onclick="toggleSelection(this)">14:00</button>
+        <button type="button" class="time-button" value="14:20" onclick="toggleSelection(this)">14:20</button>
+        <button type="button" class="time-button" value="14:40" onclick="toggleSelection(this)">14:40</button>
+        <button type="button" class="time-button" value="15:00" onclick="toggleSelection(this)">15:00</button>
+        <button type="button" class="time-button" value="15:20" onclick="toggleSelection(this)">15:20</button>
+        <button type="button" class="time-button" value="15:40" onclick="toggleSelection(this)">15:40</button>
+        <button type="button" class="time-button" value="16:00" onclick="toggleSelection(this)">16:00</button>
+        <button type="button" class="time-button" value="16:20" onclick="toggleSelection(this)">16:20</button>
+           <button type="button" class="time-button" value="16:40" onclick="toggleSelection(this)">16:40</button>
+        <button type="button" class="time-button" value="17:00" onclick="toggleSelection(this)">17:00</button>
+        <button type="button" class="time-button" value="17:20" onclick="toggleSelection(this)">17:20</button>
+        <button type="button" class="time-button" value="17:40" onclick="toggleSelection(this)">17:40</button>
+        <button type="button" class="time-button" value="18:00" onclick="toggleSelection(this)">18:00</button>
+        <button type="button" class="time-button" value="18:20" onclick="toggleSelection(this)">18:20</button>
+        <button type="button" class="time-button" value="18:40" onclick="toggleSelection(this)">18:40</button>
+        <button type="button" class="time-button" value="19:00" onclick="toggleSelection(this)">19:00</button>
+        <button type="button" class="time-button" value="19:20" onclick="toggleSelection(this)">19:20</button>
+        <button type="button" class="time-button" value="19:40" onclick="toggleSelection(this)">19:40</button>
+        <button type="button" class="time-button" value="20:00" onclick="toggleSelection(this)">20:00</button>
+           <button type="button" class="time-button" value="20:20" onclick="toggleSelection(this)">20:20</button>
+        <button type="button" class="time-button" value="20:40" onclick="toggleSelection(this)">20:40</button>
+        <button type="button" class="time-button" value="21:00" onclick="toggleSelection(this)">21:00</button>
+        <button type="button" class="time-button" value="21:20" onclick="toggleSelection(this)">21:20</button>
+        <button type="button" class="time-button" value="21:40" onclick="toggleSelection(this)">21:40</button>
+        <button type="button" class="time-button" value="22:00" onclick="toggleSelection(this)">22:00</button>
+        <button type="button" class="time-button" value="22:20" onclick="toggleSelection(this)">22:20</button>
+        <button type="button" class="time-button" value="22:40" onclick="toggleSelection(this)">22:40</button>
+        <button type="button" class="time-button" value="23:00" onclick="toggleSelection(this)">23:00</button>
+        <button type="button" class="time-button" value="23:20" onclick="toggleSelection(this)">23:20</button>
+        <button type="button" class="time-button" value="23:40" onclick="toggleSelection(this)">23:40</button>
+      </div>
+    </div>
+  </div>
+          </div>
+        <button id="sendViaWhatsapp">Enviar via WhatsApp</button>
+ 
+<script>
+    let maxAllowed = 10;
+    let saldo = parseFloat(document.getElementById('saldoValue').textContent) || 15.00; // Inicializa saldo a partir da div
+    updateSaldoDisplay(); // Inicializa a exibição do saldo
+
+    function updateSaldoDisplay() {
+        document.getElementById('saldoValue').textContent = saldo.toFixed(2);
+    }
+
+    function updateSaldo(inputValue) {
+        if (inputValue > saldo) {
+            alert("Saldo insuficiente.");
+            return false;
+        }
+
+        saldo -= inputValue;
+        updateSaldoDisplay(); // Atualiza a exibição do saldo
+
+        if (saldo <= 0) {
+            // Armazene os dados no localStorage
+            localStorage.setItem('selectedImages', JSON.stringify(selectedImages));
+            localStorage.setItem('selectedTimes', JSON.stringify(selectedTimes));
+            localStorage.setItem('inputValue', inputValue);
+
+            // Redirecionar para a página de pagamento
+            window.location.href = "https://meutimecerto.netlify.app/pixpagamento";
+        }
+
+        return true;
+    }
+
+    function calculate() {
+        let inputValue = parseFloat(document.getElementById('inputValue').value) || 0;
+        let imageCheckboxes = document.querySelectorAll('.image-checkbox:checked');
+        let imageCount = imageCheckboxes.length;
+
+        if (imageCount > maxAllowed) {
+            alert("Você só pode selecionar até 10 imagens.");
+            this.checked = false;
+            return;
+        }
+
+        let result = (inputValue * 35) / imageCount;
+        document.getElementById('result').textContent = "Total: " + result.toFixed(2);
+
+        toggleOpacity();
+    }
+
+    function toggleOpacity() {
+        const checkboxes = document.querySelectorAll('.image-checkbox');
+        checkboxes.forEach(checkbox => {
+            let imageContainer = checkbox.parentElement.querySelector('img');
+            imageContainer.style.opacity = checkbox.checked ? '0.4' : '1';
+        });
+    }
+
+    document.querySelectorAll('.image-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', calculate);
+    });
+
+    function hidePastTimes() {
+        const currentTime = new Date();
+        const currentHours = currentTime.getHours();
+        const currentMinutes = currentTime.getMinutes();
+        const buttons = document.querySelectorAll('.time-button');
+
+        buttons.forEach(button => {
+            const [hours, minutes] = button.value.split(':').map(Number);
+            const timeDifference = (hours * 60 + minutes) - (currentHours * 60 + currentMinutes);
+
+            if (timeDifference <= 2) {
+                button.classList.add('hidden');
+            }
+        });
+    }
+
+    window.onload = hidePastTimes;
+
+    function toggleSelection(button) {
+        button.classList.toggle('selected');
+    }
+
+    function sendWhatsApp() {
+        selectedImages = [];
+        selectedTimes = [];
+
+        let selectedImageCheckboxes = document.querySelectorAll('.image-checkbox:checked');
+        if (selectedImageCheckboxes.length === 0) {
+            alert("Por favor, selecione pelo menos uma imagem.");
+            return;
+        }
+
+        let selectedTimeButtons = document.querySelectorAll('.time-button.selected');
+        if (selectedTimeButtons.length === 0) {
+            alert("Por favor, selecione pelo menos um horário.");
+            return;
+        }
+
+        let inputValue = parseFloat(document.getElementById('inputValue').value) || 0;
+        if (inputValue === 0) {
+            alert("Por favor, digite um valor válido.");
+            return;
+        }
+
+        if (!updateSaldo(inputValue)) {
+            return;
+        }
+
+        selectedImageCheckboxes.forEach(checkbox => {
+            let img = checkbox.nextElementSibling.querySelector('img');
+            let imageUrl = img.getAttribute('src');
+            let altText = img.getAttribute('alt');
+            let imageName = imageUrl.match(/main\/([^/]+)\.(jpeg|jpg|png)/)[1];
+            selectedImages.push(`${imageName} (${altText})`);
+        });
+
+        selectedTimeButtons.forEach(button => {
+            selectedTimes.push(button.textContent);
+        });
+
+        let message = "Seleção de números de imagens:\n";
+        selectedImages.forEach(imageNumber => {
+            message += imageNumber + "\n";
+        });
+
+        message += "\nHorários selecionados:\n";
+        selectedTimes.forEach(time => {
+            message += time + "\n";
+        });
+
+        message += "\nTotal a pagar: " + (inputValue * selectedTimes.length).toFixed(2);
+        message += "\nTotal a receber: " + ((inputValue * 35) / selectedImageCheckboxes.length).toFixed(2);
+
+        let whatsappLink = `https://wa.me/5571992290058?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappLink, '_blank');
+    }
+
+    document.getElementById('sendViaWhatsapp').addEventListener('click', sendWhatsApp);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var inputValue = document.getElementById('inputValue');
+        var resultDiv = document.getElementById('result');
+
+        function updateTotal() {
+            var value = parseFloat(inputValue.value) || 0;
+            if (!isNaN(value)) {
+                let imageCheckboxes = document.querySelectorAll('.image-checkbox:checked');
+                let imageCount = imageCheckboxes.length;
+
+                if (imageCount > maxAllowed) {
+                    return;
+                }
+
+                let result = (value * 35) / imageCount;
+                resultDiv.textContent = 'Total: ' + result.toFixed(2);
+            }
+        }
+
+        inputValue.addEventListener('input', updateTotal);
+
+        function updateCheckboxCount() {
+            var checkboxes = document.querySelectorAll('.image-checkbox');
+            var checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+            document.getElementById('checkboxCount').textContent = 'Time Marcados: ' + checkedCount;
+        }
+
+        var checkboxes = document.querySelectorAll('.image-checkbox');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateCheckboxCount);
+        });
+
+        updateCheckboxCount();
+    });
+</script>
+
+</body>
+</html>
